@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Toko Baju</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+      <!-- Logo kiri -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">YOURBRAND</a>
+      </div>
+      <!-- Menu tengah -->
+      <ul class="nav navbar-nav navbar-center-custom">
+        <li><a href="product.html">PRIA</a></li>
+        <li><a href="category.html?cat=wanita">WANITA</a></li>
+        <li><a href="category.html?cat=anak">ANAK-ANAK</a></li>
+        <li><a href="category.html?cat=sale">SALE</a></li>
+        <li><a href="about.html">TENTANG KAMI</a></li>
+        <li><a href="contact.html">KONTAK</a></li>
+      </ul>
+      <!-- Search dan ikon kanan -->
+      <ul class="nav navbar-nav navbar-right-custom navbar-right">
+        <li>
+          <form class="navbar-form">
+            <input type="text" class="form-control navbar-search-custom" placeholder="Cari produk...">
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+        </li>
+        <li><a href="wishlist.html"><span class="glyphicon glyphicon-heart"></span> <span class="hidden-xs">WISHLIST</span></a></li>
+        <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs">CART</span> <span class="badge cart-badge">0</span></a></li>
+        <li><a href="login/login.html"><span class="glyphicon glyphicon-user"></span> <span class="hidden-xs">LOGIN</span></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+            
+
+<section class="container">
+  <div class="slider-wrapper">
+    <div class="slider">
+        <img src="assets/images/carousel2.jpg" class="img-responsive" alt="Banner Utama">
+        <div class="slider-caption">
+            <h2>Selamat Datang di Toko Baju N3ToD</h2>
+            <p>Temukan koleksi fashion terbaru kami!</p>
+            <a href="product.html" class="btn btn-primary">Lihat Koleksi</a>
+          </div>
+        <img src="assets/images/carousel5.jpg" class="img-responsive" alt="Banner Promo">
+        <div class="slider-caption">
+            <h2>Diskon Spesial Akhir Tahun</h2>
+            <p>Dapatkan diskon hingga 50% untuk produk terpilih!</p>
+            <a href="product.html" class="btn btn-primary">Belanja Sekarang</a>
+          </div>
+        <img src="assets/images/carousel1.jpg" class="img-responsive" alt="Banner Fashion Pria">
+        <div class="slider-caption">
+            <h2>Koleksi Fashion Pria Terbaru</h2>
+            <p>Upgrade gaya Anda dengan koleksi fashion pria kami!</p>
+            <a href="product.html" class="btn btn-primary">Lihat Koleksi</a>
+          </div>
+      </div>
+    </div>
+</section>
+
+<div class="container product-showcase-container">
+  <div class="row section-title-row">
+    <div class="col-xs-12">
+      <h2 class="section-title">Produk Terlaris</h2>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Contoh Product Card -->
+    <div class="col-sm-6 col-md-3 product-card-wrapper">
+      <div class="product-card">
+        <a href="product-detail.html?id=1" class="product-image-link">
+          <img src="https://placehold.co/400x500?text=Baju+Keren+1" class="img-responsive product-image" alt="Nama Produk 1">
+          <div class="product-quick-view">Lihat Detail</div>
+        </a>
+        <div class="product-info">
+          <h4 class="product-name"><a href="product-detail.html?id=1">Nama Produk Keren Model A</a></h4>
+          <p class="product-price">Rp 250.000</p>
+          <div class="product-actions">
+            <button class="btn btn-default btn-sm btn-wishlist" title="Tambah ke Wishlist"><span class="glyphicon glyphicon-heart-empty"></span></button>
+            <button class="btn btn-primary btn-sm btn-add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Ulangi col-sm-6 col-md-3 untuk produk lain (total 4 per baris di md) -->
+
+    <div class="col-sm-6 col-md-3 product-card-wrapper">
+      <div class="product-card">
+        <a href="product-detail.html?id=2" class="product-image-link">
+          <img src="https://placehold.co/400x500?text=Jaket+Modis+2" class="img-responsive product-image" alt="Nama Produk 2">
+           <div class="product-quick-view">Lihat Detail</div>
+        </a>
+        <div class="product-info">
+          <h4 class="product-name"><a href="product-detail.html?id=2">Jaket Modis Kekinian</a></h4>
+          <p class="product-price">Rp 450.000</p>
+           <div class="product-actions">
+            <button class="btn btn-default btn-sm btn-wishlist" title="Tambah ke Wishlist"><span class="glyphicon glyphicon-heart-empty"></span></button>
+            <button class="btn btn-primary btn-sm btn-add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ... produk 3 ... -->
+    <!-- ... produk 4 ... -->
+  </div>
+  <!-- Anda bisa menambahkan baris produk lain atau section lain -->
+</div>
+<br>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <h5>Toko Kami</h5>
+        <ul class="list-unstyled footer-links">
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="stores.html">Lokasi Toko</a></li>
+          <li><a href="careers.html">Karir</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h5>Bantuan</h5>
+        <ul class="list-unstyled footer-links">
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="shipping.html">Info Pengiriman</a></li>
+          <li><a href="returns.html">Kebijakan Pengembalian</a></li>
+          <li><a href="contact.html">Hubungi Kami</a></li>
+          <li><a href="how-to-order.html">Cara Pemesanan</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h5>Lainnya</h5>
+        <ul class="list-unstyled footer-links">
+          <li><a href="terms.html">Syarat & Ketentuan</a></li>
+          <li><a href="privacy.html">Kebijakan Privasi</a></li>
+          <li><a href="sitemap.html">Peta Situs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h5>Ikuti Kami</h5>
+        <ul class="list-inline social-icons">
+          <li><a  title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a  title="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li><a  title="Twitter"><i class="fab fa-twitter"></i></a></li>
+          <li><a  title="Youtube"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="copyright-text">© <script>document.write(new Date().getFullYear());</script> Toko Baju N3ToD.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
