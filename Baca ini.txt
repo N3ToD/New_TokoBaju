@@ -1,0 +1,1 @@
+Jangan lupa untuk file toko_baju_db.sql harus diexport ke localhost/phpMyAdmin agar data dapat ter load dengan benar dan tidak terjadi masalah - N3ToD
