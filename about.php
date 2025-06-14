@@ -1,17 +1,70 @@
 <?php
 session_start();
-require 'db_connect.php';
+// Data tim bisa disimpan dalam array PHP agar lebih rapi
+$team_members = [
+    [
+        'name' => 'Muhammad Naufal Rizqullah',
+        'nim' => '19240974',
+        'role' => 'Fron & back-end Developer'
+    ],
+    [
+        'name' => 'Yasir arafat',
+        'nim' => '19240920',
+        'role' => 'Front-End Developer'
+    ],
+    [
+        'name' => 'Rama bintang',
+        'nim' => '19241424',
+        'role' => 'Front-End Developer'
+    ],
+    [
+        'name' => 'Muhammad Fauzan',
+        'nim' => '19241346',
+        'role' => 'Flowchart'
+    ],
+    [
+        'name' => 'Firmansyah',
+        'nim' => '19240671',
+        'role' => 'Design PPT'
+    ],
+    [
+        'name' => 'Rahmat Hidayat',
+        'nim' => '19241038',
+        'role' => 'Flowchart'
+    ],
+    [
+        'name' => 'Muhammad Raihan',
+        'nim' => '19240486',
+        'role' => 'Design PPT'
+    ],
+    [
+        'name' => 'Rahmat Ferdiansyah',
+        'nim' => '19241462',
+        'role' => 'Proposal'
+    ]
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - NeoUrban</title>
+    <title>About Us - NeoUrban</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        .team-member-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -24,21 +77,21 @@ require 'db_connect.php';
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="product.php">Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
+                    <a class="nav-link active" href="about.php">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
 
-                <?php if (isset($_SESSION['user_id'])): // Cek apakah user sudah login ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
                     
-                    <!-- Muncul jika SUDAH LOGIN -->
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">
                             <i class="fa-solid fa-bag-shopping"></i>
@@ -58,7 +111,7 @@ require 'db_connect.php';
 
                 <?php else: ?>
 
-                    <!-- Muncul jika BELUM LOGIN -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="login.php" title="Login / Register">
                             <i class="fa-solid fa-arrow-right-to-bracket"></i>
@@ -71,95 +124,35 @@ require 'db_connect.php';
     </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Main Content -->
-    <section id="home">
-        <div class="container">
-            <h2>New Arrivals</h2>
-            <h1><span>Puma X</span> <love>Harry Potter</love></h1>
-            <p>Your New Style.</p>
-            <a href="#featured">
-             <button class="btn">Shop Now</button>
-            </a>
-        </div>
-    </section>
 
-    <section id="new" class="w-100">
-        <div class="row p-0 m-0">
-            <div class="one col-lg-4 col-md-12 col-12 p-0">
-                <img class="img-fluid" src="assets/img/new/8.jpg" alt="New Arrival 1">
-                <div class="details">
-                    <h2>Shoes</h2>
-                    <a href="category/shoes.php">
-                    <button class="text-uppercase">Shop Now</button>
-                    </a>
+    <!-- Konten Halaman About Us -->
+    <section id="about-us" class="my-5 py-5">
+        <div class="container text-center mt-5 pt-5">
+            <h2 class="font-weight-bold">About Our Team</h2>
+            <hr class="mx-auto">
+            <p>Kami adalah Kelompok 5</p>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                
+                <?php foreach ($team_members as $member): ?>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                    <div class="card text-center border-0 shadow-sm team-member-card h-100">
+                        <div class="card-body">
+                            
+                            <i class="fas fa-user-circle fa-5x text-secondary my-3"></i>
+                            <h5 class="card-title mt-2"><?= htmlspecialchars($member['name']) ?></h5>
+                            <p class="card-text text-muted"><?= htmlspecialchars($member['nim']) ?></p>
+                            <p class="card-text"><strong><?= htmlspecialchars($member['role']) ?></strong></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="one col-lg-4 col-md-12 col-12 p-0">
-                <img class="img-fluid" src="assets/img/new/7.jpg" alt="New Arrival 1">
-                <div class="details">
-                    <h2>Clothes</h2>
-                    <a href="category/clothes.php">
-                    <button class="text-uppercase">Shop Now</button>
-                    </a>
-                </div>
-            </div>
-            <div class="one col-lg-4 col-md-12 col-12 p-0">
-                <img class="img-fluid" src="assets/img/new/6.jpg" alt="New Arrival 1">
-                <div class="details">
-                    <h2>Pants</h2>
-                    <a href="category/pants.php">
-                    <button class="text-uppercase">Shop Now</button>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
+    <!-- End Konten -->
 
-    <section id="featured" class="my-5 pb-5">
-    <div class="container text-center mt-5 py-5">
-        <h3>New Arrivals</h3>
-        <hr class="mx-auto">
-        <p>New limited products from Puma. Puma X Harry Potter</p>
-    </div>
-    <div class="row mx-auto container-fluid">
-        <?php
-        $sql = "SELECT * FROM products WHERE name LIKE '%PUMA x HARRY POTTER%' ORDER BY id DESC LIMIT 4";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            while($product = mysqli_fetch_assoc($result)) {
-        ?>
-        <div class="product text-center col-lg-3 col-md-4 col-12">
-            <a href="detail-product.php?id=<?= $product['id'] ?>">
-                <img class="img-fluid mb-3" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-            </a>
-            <h5 class="p-name"><?= htmlspecialchars($product['name']) ?></h5>
-            <h4 class="p-price">Rp. <?= number_format($product['price'], 0, ',', '.') ?></h4>
-            <a href="detail-product.php?id=<?= $product['id'] ?>">
-                <button class="buy-btn">Buy Now</button>
-            </a>
-        </div>
-        <?php
-            }
-        } else {
-            echo "<p class='text-center'>No featured products found.</p>";
-        }
-        ?>
-    </div>
-</section>
-
-    <section id="banner" class="my-5 py-5">
-        <div class="container">
-            <h4>In This Time Sale</h4>
-            <h1>UP TO 40% OFF</h1>
-            <a href="product.php">
-            <button class="text-uppercase">Shop Now</button>
-            </a>
-        </div>
-    </section>
-
-        
-    <!-- End content -->
     <!-- Footer -->
     <footer class="mt-5 py-5">
         <div class="row container mx-auto pt-5">
@@ -214,13 +207,10 @@ require 'db_connect.php';
             
         </div>
     </footer>
-    <!-- End Footer -->
 
-    <!-- slim -->
+    <!-- Script JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <!-- Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script></body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

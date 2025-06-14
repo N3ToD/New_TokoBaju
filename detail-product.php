@@ -59,29 +59,55 @@ if (!$product) {
         <span><i id="bar" class="fa-solid fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link active" href="product.php">Product</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
-            </li>
-            <a class="nav-link " href="cart.php">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) { ?>
-                           <span class="badge badge-warning"><?= count($_SESSION['cart']) ?></span>
-                        <?php } ?>
-                    </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="product.php">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+                <?php if (isset($_SESSION['user_id'])): // Cek apakah user sudah login ?>
+                    
+                    <!-- Muncul jika SUDAH LOGIN -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.php">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                               <span class="badge badge-warning"><?= count($_SESSION['cart']) ?></span>
+                            <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth_process.php?action=logout" title="Logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link">Hi, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+                    </li>
+
+                <?php else: ?>
+
+                    <!-- Muncul jika BELUM LOGIN -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php" title="Login / Register">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </a>
+                    </li>
+
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
     </nav>
-    <!--End Navbar-->
+    <!-- End Navbar -->
 
     <!--Produk Detail (BAGIAN YANG DIUBAH)-->
     <section class="container dproduct my-5 pt-5">
@@ -152,20 +178,21 @@ if (!$product) {
     </section>
     <!--End Produk Detail-->
 
-    <!-- Footer (tetap sama) -->
+    <!-- Footer -->
     <footer class="mt-5 py-5">
         <div class="row container mx-auto pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-12">
-                <img src="assets/img/logo2.png" alt="Logo Toko Baju">
+                <img src="assets/img/logo2.png" alt="Logo Toko Baju"><br><br>
+                <p>Official Reseller Since 2016.</p>
                 
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-12">
                 <h5 class="pb-2">Featured</h5>
                 <ul class="text-uppercase list-unstyled">
-                    <li><a href="#">Clothes</a></li>
-                    <li><a href="#">Pants</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Collections</a></li>
+                    <li><a href="clothes.php">Clothes</a></li>
+                    <li><a href="pants.php">Pants</a></li>
+                    <li><a href="shoes.php">Shoes</a></li>
+                    <li><a href="product.php">Collections</a></li>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-12">
                 <h5 class="pb-2">Contact Us</h5>
@@ -177,6 +204,14 @@ if (!$product) {
                     <h6 class="text-uppercase">Email</h6>
                     <p>neourban@gmail.com</p>
                 </div>
+            </div>
+            <div class="footer-one col-lg-3 col-md-6 col-12">
+                <h5 class="pb-2">Trusted by</h5>
+
+                <p>Nike</p>
+                <p>Adidas</p>
+                <p>Puma</p>
+                <p>Aerostreet</p>
             </div>
         </div>
         <div class="copyright mt-5">
@@ -194,6 +229,7 @@ if (!$product) {
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
+            
         </div>
     </footer>
     <!-- End Footer -->

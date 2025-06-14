@@ -28,25 +28,51 @@ $grand_total = 0;
         <span><i id="bar" class="fa-solid fa-bars"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="product.php">Product</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
-            </li>
-            <a class="nav-link active" href="cart.php">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) { ?>
-                           <span class="badge badge-warning"><?= count($_SESSION['cart']) ?></span>
-                        <?php } ?>
-                    </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product.php">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+                <?php if (isset($_SESSION['user_id'])): // Cek apakah user sudah login ?>
+                    
+                    <!-- Muncul jika SUDAH LOGIN -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cart.php">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                               <span class="badge badge-warning"><?= count($_SESSION['cart']) ?></span>
+                            <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth_process.php?action=logout" title="Logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link">Hi, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+                    </li>
+
+                <?php else: ?>
+
+                    <!-- Muncul jika BELUM LOGIN -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php" title="Login / Register">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </a>
+                    </li>
+
+                <?php endif; ?>
+            </ul>
         </div>
     </div>
     </nav>
@@ -101,7 +127,7 @@ $grand_total = 0;
                     </div>
                     <div class="col-md-6 text-right">
                         <h3>Total: Rp. <?= number_format($grand_total, 0, ',', '.') ?></h3>
-                        <button class="btn btn-primary">Proceed to Checkout</button>
+                        <a href="checkout.php" class="btn btn-primary">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -110,18 +136,19 @@ $grand_total = 0;
     </section>
     <!-- End Keranjang-->
     <!-- Footer -->
-     <footer class="mt-5 py-5">
+    <footer class="mt-5 py-5">
         <div class="row container mx-auto pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-12">
-                <img src="assets/img/logo2.png" alt="Logo Toko Baju">
+                <img src="assets/img/logo2.png" alt="Logo Toko Baju"><br><br>
+                <p>Official Reseller Since 2016.</p>
                 
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-12">
                 <h5 class="pb-2">Featured</h5>
                 <ul class="text-uppercase list-unstyled">
-                    <li><a href="#">Clothes</a></li>
-                    <li><a href="#">Pants</a></li>
-                    <li><a href="#">Shoes</a></li>
+                    <li><a href="category/clothes.php">Clothes</a></li>
+                    <li><a href="category/pants.php">Pants</a></li>
+                    <li><a href="category/shoes.php">Shoes</a></li>
                     <li><a href="product.php">Collections</a></li>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-12">
@@ -134,6 +161,14 @@ $grand_total = 0;
                     <h6 class="text-uppercase">Email</h6>
                     <p>neourban@gmail.com</p>
                 </div>
+            </div>
+            <div class="footer-one col-lg-3 col-md-6 col-12">
+                <h5 class="pb-2">Trusted by</h5>
+
+                <p>Nike</p>
+                <p>Adidas</p>
+                <p>Puma</p>
+                <p>Aerostreet</p>
             </div>
         </div>
         <div class="copyright mt-5">
@@ -151,8 +186,9 @@ $grand_total = 0;
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
+            
         </div>
-     </footer>
+    </footer>
     <!-- End Footer -->
 
     <!-- slim -->
